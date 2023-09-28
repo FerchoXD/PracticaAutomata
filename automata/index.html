@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Style.css">
+    <link rel="stylesheet" href="style2.css" />
+    <link rel="shortcut icon" href="./13561090_5282870.svg" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+        }
+    </style>
+    <title>Automatas</title>
+</head>
+
+<body>
+    <div class="antialiased bg-gray-50">
+        <nav class="bg-white border-b border-gray-200 px-4 py-2.5 fixed left-0 right-0 top-0 z-50">
+            <div class="flex flex-wrap justify-between items-center">
+                <div class="flex justify-start items-center">
+                    </button>
+                    <img src="./13561090_5282870.svg" class="mr-3 h-8" alt="Automata" />
+                    <span class="self-center text-2xl font-semibold whitespace-nowrap">Lenguajes y Automatas</span>
+                </div>
+            </div>
+        </nav>
+        <aside
+            class="fixed top-0 left-0 z-40 w-64 h-screen pt-14 transition-transform -translate-x-full bg-white border-r border-gray-200 md:translate-x-0"
+            aria-label="Sidenav" id="drawer-navigation">
+            <div class="overflow-y-auto py-5 px-3 h-full bg-white">
+                <ul class="space-y-2">
+                    <li>
+                        <a href="./index.html"
+                            class="flex items-center p-2 text-base font-medium text-gray-900 rounded-lg transition duration-75 hover:bg-gray-100 ">
+
+                            <svg class="w-6 h-6 text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                fill="none" viewBox="0 0 20 16">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="1" d="M5 4 1 8l4 4m10-8 4 4-4 4M11 1 9 15" />
+                            </svg>
+
+
+                            <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path>
+                            <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path>
+                            </svg>
+                            <span class="ml-3">Automata</span>
+                        </a>
+                    </li>
+                    <ul class="pt-5 mt-5 space-y-2 border-t border-gray-100">
+                        <li>
+                            <a href="./sobremi.html"
+                                class="flex items-center p-2 text-base font-medium text-gray-900 rounded-lg transition duration-75 hover:bg-gray-100 ">
+                                <svg aria-hidden="true"
+                                    class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 "
+                                    fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd"
+                                        d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-2 0c0 .993-.241 1.929-.668 2.754l-1.524-1.525a3.997 3.997 0 00.078-2.183l1.562-1.562C15.802 8.249 16 9.1 16 10zm-5.165 3.913l1.58 1.58A5.98 5.98 0 0110 16a5.976 5.976 0 01-2.516-.552l1.562-1.562a4.006 4.006 0 001.789.027zm-4.677-2.796a4.002 4.002 0 01-.041-2.08l-.08.08-1.53-1.533A5.98 5.98 0 004 10c0 .954.223 1.856.619 2.657l1.54-1.54zm1.088-6.45A5.974 5.974 0 0110 4c.954 0 1.856.223 2.657.619l-1.54 1.54a4.002 4.002 0 00-2.346.033L7.246 4.668zM12 10a2 2 0 11-4 0 2 2 0 014 0z"
+                                        clip-rule="evenodd"></path>
+                                </svg>
+                                <span class="ml-3">Sobre mi</span>
+                            </a>
+                        </li>
+                    </ul>
+            </div>
+    </div>
+    </aside>
+    <div>
+        <main class="p-4 md:ml-64 h-auto pt-20">
+            <div class="flex w-full">
+                <header>
+                    <div class="mr-2">
+                        <h1 class="text-gray-800 text-4xl">Automata</h1>
+                        <div class="flex ">
+                            <h1 class="mr-2">Rango:</h1>
+                            <p class="mr-2">UN-0001-A</p>
+                            <svg class="w-6 h-6 text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                fill="none" viewBox="0 0 14 10">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="1" d="M1 5h12m0 0L9 1m4 4L9 9" />
+                            </svg>
+                            <p class="ml-2">NZ-9999-Z</p>
+
+                        </div>
+                        <p class="text-gray-800 mb-2">Ejemplos:</p>
+                        <p class="text-green-500 mb-2">UV-0100-F</p>
+                        <p class="text-green-500 mb-2">GV-1000-D</p>
+
+                        <div class="relative">
+                            <input type="text" id="floating_outlined"
+                                class="block px-2.5 pb-2.5 pt-4 w-80 text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-green-600 peer"
+                                placeholder=" " />
+                            <label for="floating_outlined"
+                                class="absolute text-sm text-gray-500  duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white px-2 peer-focus:px-2 peer-focus:text-green-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1">Ingresa
+                                una cadena</label>
+                        </div>
+                        <button type="button" id="btn_revisar"
+                            class="text-white mt-4 w-80 bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 shadow-lg shadow-green-500/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Revisar</button>
+                    </div>
+                </header>
+                <div id="svg-container" class="">
+                    <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+
+                        <circle cx="50" cy="200" r="25" fill="white" stroke="black"
+                            stroke-width="1" id="q0" />
+                        <text x="50" y="200" text-anchor="middle" alignment-baseline="central"
+                            fill="black">q0</text>
+
+                        <text x="100" y="190" text-anchor="middle" fill="black">U...N</text>
+
+                        <svg width="400" height="250">
+                            <line x1="80" y1="205" x2="120" y2="205" stroke="black"
+                                stroke-width="1" marker-end="url(#arrow)" />
+                            <defs>
+                                <marker id="arrow" markerWidth="10" markerHeight="10" refX="8"
+                                    refY="3" orient="auto">
+                                    <path d="M0,0 L0,6 L9,3 z" fill="#000000" />
+                                </marker>
+                            </defs>
+                        </svg>
+
+                        <circle cx="150" cy="200" r="25" fill="white" stroke="black"
+                            stroke-width="1" id="q1" />
+                        <text x="150" y="200" text-anchor="middle" alignment-baseline="central"
+                            fill="black">q1</text>
+
+                        <text x="200" y="190" text-anchor="middle" fill="black">N...Z</text>
+
+
+                        <svg width="400" height="250">
+                            <line x1="180" y1="205" x2="220" y2="205" stroke="black"
+                                stroke-width="1" marker-end="url(#arrow)" />
+                            <defs>
+                                <marker id="arrow" markerWidth="10" markerHeight="10" refX="8"
+                                    refY="3" orient="auto">
+                                    <path d="M0,0 L0,6 L9,3 z" fill="#000000" />
+                                </marker>
+                            </defs>
+                        </svg>
+
+                        <circle cx="250" cy="200" r="25" fill="white" stroke="black"
+                            stroke-width="1" id="q2" />
+                        <text x="250" y="200" text-anchor="middle" alignment-baseline="central"
+                            fill="black">q2</text>
+
+                        <text x="290" y="190" text-anchor="middle" fill="black">-</text>
+                        <svg width="400" height="250">
+                            <line x1="280" y1="205" x2="310" y2="205" stroke="black"
+                                stroke-width="1" marker-end="url(#arrow)" />
+                            <defs>
+                                <marker id="arrow" markerWidth="10" markerHeight="10" refX="8"
+                                    refY="3" orient="auto">
+                                    <path d="M0,0 L0,6 L9,3 z" fill="#000000" />
+                                </marker>
+                            </defs>
+                        </svg>
+
+                        <circle cx="340" cy="200" r="25" fill="white" stroke="black"
+                            stroke-width="1" id="q3" />
+                        <text x="340" y="200" text-anchor="middle" alignment-baseline="central"
+                            fill="black">q3</text>
+
+
+                        <text x="290" y="190" text-anchor="middle" fill="black">-</text>
+                        <svg width="400" height="250">
+                            <line x1="365" y1="215" x2="390" y2="240" stroke="black"
+                                stroke-width="1" marker-end="url(#arrow)" />
+                            <defs>
+                                <marker id="arrow" markerWidth="10" markerHeight="10" refX="8"
+                                    refY="3" orient="auto">
+                                    <path d="M0,0 L0,6 L9,3 z" fill="#000000" />
+                                </marker>
+                            </defs>
+                        </svg>
+
+                        <text x="350" y="250" text-anchor="middle" fill="black">1...9</text>
+                        <circle cx="420" cy="260" r="25" fill="white" stroke="black"
+                            stroke-width="1" id="q4" />
+                        <text x="420" y="260" text-anchor="middle" alignment-baseline="central"
+                            fill="black">q4</text>
+
+
+
+                        <text x="470" y="250" text-anchor="middle" fill="black">0...9</text>
+                        <circle cx="530" cy="260" r="25" fill="white" stroke="black"
+                            stroke-width="1" id="q5" />
+                        <text x="530" y="260" text-anchor="middle" alignment-baseline="central"
+                            fill="black">q5</text>
+
+                        <svg width="900" height="900">
+                            <line x1="450" y1="260" x2="500" y2="260" stroke="black"
+                                stroke-width="1" marker-end="url(#arrow)" />
+                            <defs>
+                                <marker id="arrow" markerWidth="10" markerHeight="10" refX="8"
+                                    refY="3" orient="auto">
+                                    <path d="M0,0 L0,6 L9,3 z" fill="#000000" />
+                                </marker>
+                            </defs>
+                        </svg>
+
+
+
+                        <text x="580" y="250" text-anchor="middle" fill="black">0...9</text>
+                        <circle cx="630" cy="260" r="25" fill="white" stroke="black"
+                            stroke-width="1" id="q6" />
+                        <text x="630" y="260" text-anchor="middle" alignment-baseline="central"
+                            fill="black">q6</text>
+
+                        <svg width="900" height="900">
+                            <line x1="560" y1="260" x2="600" y2="260" stroke="black"
+                                stroke-width="1" marker-end="url(#arrow)" />
+                            <defs>
+                                <marker id="arrow" markerWidth="10" markerHeight="10" refX="8"
+                                    refY="3" orient="auto">
+                                    <path d="M0,0 L0,6 L9,3 z" fill="#000000" />
+                                </marker>
+                            </defs>
+                        </svg>
+
+                        <text x="680" y="250" text-anchor="middle" fill="black">0...9</text>
+                        <circle cx="730" cy="260" r="25" fill="white" stroke="black"
+                            stroke-width="1" id="q7" />
+                        <text x="730" y="260" text-anchor="middle" alignment-baseline="central"
+                            fill="black">q7</text>
+
+                        <svg width="900" height="900">
+                            <line x1="660" y1="260" x2="700" y2="260" stroke="black"
+                                stroke-width="1" marker-end="url(#arrow)" />
+                            <defs>
+                                <marker id="arrow" markerWidth="10" markerHeight="10" refX="8"
+                                    refY="3" orient="auto">
+                                    <path d="M0,0 L0,6 L9,3 z" fill="#000000" />
+                                </marker>
+                            </defs>
+                        </svg>
+
+                        <text x="390" y="195" text-anchor="middle" fill="black">0</text>
+                        <circle cx="440" cy="202" r="25" fill="white" stroke="black"
+                            stroke-width="1" id="q9" />
+                        <text x="440" y="200" text-anchor="middle" alignment-baseline="central"
+                            fill="black">q9</text>
+
+                        <svg width="900" height="900">
+                            <line x1="370" y1="210" x2="410" y2="210" stroke="black"
+                                stroke-width="1" marker-end="url(#arrow)" />
+                            <defs>
+                                <marker id="arrow" markerWidth="10" markerHeight="10" refX="8"
+                                    refY="3" orient="auto">
+                                    <path d="M0,0 L0,6 L9,3 z" fill="#000000" />
+                                </marker>
+                            </defs>
+                        </svg>
+
+                        <text x="490" y="195" text-anchor="middle" fill="black">1...9</text>
+                        <circle cx="540" cy="202" r="25" fill="white" stroke="black"
+                            stroke-width="1" id="q10" />
+                        <text x="540" y="200" text-anchor="middle" alignment-baseline="central"
+                            fill="black">q10</text>
+
+                        <svg width="900" height="900">
+                            <line x1="470" y1="210" x2="510" y2="210" stroke="black"
+                                stroke-width="1" marker-end="url(#arrow)" />
+                            <defs>
+                                <marker id="arrow" markerWidth="10" markerHeight="10" refX="8"
+                                    refY="3" orient="auto">
+                                    <path d="M0,0 L0,6 L9,3 z" fill="#000000" />
+                                </marker>
+                            </defs>
+                        </svg>
+
+                        <text x="590" y="195" text-anchor="middle" fill="black">0...9</text>
+                        <circle cx="640" cy="202" r="25" fill="white" stroke="black"
+                            stroke-width="1" id="q11" />
+                        <text x="640" y="200" text-anchor="middle" alignment-baseline="central"
+                            fill="black">q11</text>
+
+                        <svg width="900" height="900">
+                            <line x1="570" y1="210" x2="610" y2="210" stroke="black"
+                                stroke-width="1" marker-end="url(#arrow)" />
+                            <defs>
+                                <marker id="arrow" markerWidth="10" markerHeight="10" refX="8"
+                                    refY="3" orient="auto">
+                                    <path d="M0,0 L0,6 L9,3 z" fill="#000000" />
+                                </marker>
+                            </defs>
+                        </svg>
+
+                        <text x="690" y="195" text-anchor="middle" fill="black">0...9</text>
+                        <circle cx="740" cy="202" r="25" fill="white" stroke="black"
+                            stroke-width="1" id="q12" />
+                        <text x="740" y="200" text-anchor="middle" alignment-baseline="central"
+                            fill="black">q12</text>
+
+                        <svg width="900" height="900">
+                            <line x1="670" y1="210" x2="710" y2="210" stroke="black"
+                                stroke-width="1" marker-end="url(#arrow)" />
+                            <defs>
+                                <marker id="arrow" markerWidth="10" markerHeight="10" refX="8"
+                                    refY="3" orient="auto">
+                                    <path d="M0,0 L0,6 L9,3 z" fill="#000000" />
+                                </marker>
+                            </defs>
+                        </svg>
+
+                        <text x="440" y="160" text-anchor="middle" fill="black">0</text>
+                        <circle cx="490" cy="130" r="25" fill="white" stroke="black"
+                            stroke-width="1" id="q13" />
+                        <text x="490" y="130" text-anchor="middle" alignment-baseline="central"
+                            fill="black">q13</text>
+
+                        <svg width="900" height="900">
+                            <line x1="450" y1="170" x2="470" y2="150" stroke="black"
+                                stroke-width="1" marker-end="url(#arrow)" />
+                            <defs>
+                                <marker id="arrow" markerWidth="10" markerHeight="10" refX="8"
+                                    refY="3" orient="auto">
+                                    <path d="M0,0 L0,6 L9,3 z" fill="#000000" />
+                                </marker>
+                            </defs>
+                        </svg>
+
+                        <text x="540" y="130" text-anchor="middle" fill="black">1...9</text>
+                        <circle cx="590" cy="130" r="25" fill="white" stroke="black"
+                            stroke-width="1" id="q14" />
+                        <text x="590" y="130" text-anchor="middle" alignment-baseline="central"
+                            fill="black">q14</text>
+
+                        <svg width="900" height="900">
+                            <line x1="515" y1="140" x2="560" y2="140" stroke="black"
+                                stroke-width="1" marker-end="url(#arrow)" />
+                            <defs>
+                                <marker id="arrow" markerWidth="10" markerHeight="10" refX="8"
+                                    refY="3" orient="auto">
+                                    <path d="M0,0 L0,6 L9,3 z" fill="#000000" />
+                                </marker>
+                            </defs>
+                        </svg>
+
+                        <text x="640" y="130" text-anchor="middle" fill="black">0...9</text>
+                        <circle cx="690" cy="130" r="25" fill="white" stroke="black"
+                            stroke-width="1" id="q15" />
+                        <text x="690" y="130" text-anchor="middle" alignment-baseline="central"
+                            fill="black">q15</text>
+
+                        <svg width="900" height="900">
+                            <line x1="615" y1="140" x2="660" y2="140" stroke="black"
+                                stroke-width="1" marker-end="url(#arrow)" />
+                            <defs>
+                                <marker id="arrow" markerWidth="10" markerHeight="10" refX="8"
+                                    refY="3" orient="auto">
+                                    <path d="M0,0 L0,6 L9,3 z" fill="#000000" />
+                                </marker>
+                            </defs>
+                        </svg>
+
+                        
+
+                        <!-- <text x="500" y="80" text-anchor="middle" fill="black">asdasd</text> -->
+                        <svg width="999" height="999">
+                            <line x1="510" y1="105" x2="540" y2="80" stroke="black"
+                                stroke-width="1" marker-end="url(#arrow)" />
+                            <defs>
+                                <marker id="arrow" markerWidth="10" markerHeight="10" refX="8"
+                                    refY="3" orient="auto">
+                                    <path d="M0,0 L0,6 L9,3 z" fill="#000000" />
+                                </marker>
+                            </defs>
+                        </svg>
+
+                        <text x="620" y="60" text-anchor="middle" fill="black">1...9</text>
+                        <circle cx="565" cy="65" r="25" fill="white" stroke="black"
+                            stroke-width="1" id="q16" />
+                        <text x="565" y="65" text-anchor="middle" alignment-baseline="central"
+                            fill="black">q16</text>
+
+                            <text x="500" y="80" text-anchor="middle" fill="black">0</text>
+                            <svg width="999" height="999">
+                                <line x1="600" y1="70" x2="650" y2="70" stroke="black"
+                                    stroke-width="1" marker-end="url(#arrow)" />
+                                <defs>
+                                    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8"
+                                        refY="3" orient="auto">
+                                        <path d="M0,0 L0,6 L9,3 z" fill="#000000" />
+                                    </marker>
+                                </defs>
+                            </svg>
+
+                        <circle cx="680" cy="65" r="25" fill="white" stroke="black"
+                            stroke-width="1" id="q17" />
+                        <text x="680" y="65" text-anchor="middle" alignment-baseline="central"
+                            fill="black">q17</text>
+
+                            <!-- <text x="500" y="80" text-anchor="middle" fill="black">-asdasdasdasd</text> -->
+                            <svg width="999" height="999">
+                                <line x1="710" y1="70" x2="830" y2="130" stroke="black"
+                                    stroke-width="1" marker-end="url(#arrow)" />
+                                <defs>
+                                    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8"
+                                        refY="3" orient="auto">
+                                        <path d="M0,0 L0,6 L9,3 z" fill="#000000" />
+                                    </marker>
+                                </defs>
+                            </svg>
+
+                        <text x="780" y="170" text-anchor="middle" fill="black">-</text>
+                        <text x="780" y="210" text-anchor="middle" fill="black">-</text>
+                        <text x="780" y="90" text-anchor="middle" fill="black">-</text>
+                        <text x="780" y="120" text-anchor="middle" fill="black">-</text>
+                        <circle cx="850" cy="150" r="25" fill="white" stroke="black"
+                            stroke-width="1" id="q8" />
+                        <text x="850" y="150" text-anchor="middle" alignment-baseline="central"
+                            fill="black">q8</text>
+
+                        <svg width="900" height="900">
+                            <line x1="760" y1="260" x2="830" y2="170" stroke="black"
+                                stroke-width="1" marker-end="url(#arrow)" />
+                            <defs>
+                                <marker id="arrow" markerWidth="10" markerHeight="10" refX="8"
+                                    refY="3" orient="auto">
+                                    <path d="M0,0 L0,6 L9,3 z" fill="#000000" />
+                                </marker>
+                            </defs>
+                        </svg>
+
+
+                        <svg width="900" height="900">
+                            <line x1="720" y1="130" x2="820" y2="140" stroke="black"
+                                stroke-width="1" marker-end="url(#arrow)" />
+                            <defs>
+                                <marker id="arrow" markerWidth="10" markerHeight="10" refX="8"
+                                    refY="3" orient="auto">
+                                    <path d="M0,0 L0,6 L9,3 z" fill="#000000" />
+                                </marker>
+                            </defs>
+                        </svg>
+
+                        <svg width="900" height="900">
+                            <line x1="760" y1="190" x2="820" y2="150" stroke="black"
+                                stroke-width="1" marker-end="url(#arrow)" />
+                            <defs>
+                                <marker id="arrow" markerWidth="10" markerHeight="10" refX="8"
+                                    refY="3" orient="auto">
+                                    <path d="M0,0 L0,6 L9,3 z" fill="#000000" />
+                                </marker>
+                            </defs>
+                        </svg>
+
+                        <text x="900" y="130" text-anchor="middle" fill="black">A...Z</text>
+                        <circle cx="950" cy="150" r="25" fill="white" stroke="black"
+                            stroke-width="1" id="q18" />
+                        <text x="950" y="150" text-anchor="middle" alignment-baseline="central"
+                            fill="black">q18</text>
+
+                        <svg width="1099" height="1099">
+                            <line x1="880" y1="150" x2="920" y2="150" stroke="black"
+                                stroke-width="1" marker-end="url(#arrow)" />
+                            <defs>
+                                <marker id="arrow" markerWidth="10" markerHeight="10" refX="8"
+                                    refY="3" orient="auto">
+                                    <path d="M0,0 L0,6 L9,3 z" fill="#000000" />
+                                </marker>
+                            </defs>
+                        </svg>
+
+                        <text x="1000" y="130" text-anchor="middle" fill="black"></text>
+                        <circle cx="1060" cy="150" r="25" fill="white" stroke="black"
+                            stroke-width="1" id="q19" />
+                            <circle cx="1060" cy="150" r="20" fill="white" stroke="black"
+                            stroke-width="1" id="qcircle_19"/>
+                        <text x="1060" y="150" text-anchor="middle" alignment-baseline="central"
+                            fill="black">q19</text>
+
+                        <svg width="1099" height="1099">
+                            <line x1="980" y1="150" x2="1030" y2="150" stroke="black"
+                                stroke-width="1" marker-end="url(#arrow)" />
+                            <defs>
+                                <marker id="arrow" markerWidth="10" markerHeight="10" refX="8"
+                                    refY="3" orient="auto">
+                                    <path d="M0,0 L0,6 L9,3 z" fill="#000000" />
+                                </marker>
+                            </defs>
+                        </svg>
+
+                    </svg>
+                </div>
+            </div>
+
+            <h1 class="mt-copy">Copyright © Derechos reservados</h1>
+        </main>
+
+    </div>
+</body>
+<script src="index.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</html>
