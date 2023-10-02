@@ -1,5 +1,6 @@
 
 const btn = document.getElementById('btn_revisar');
+const btnl = document.getElementById('btn_limpiar');
 
 const StringComplete = [];
 const validLettersForEndCase = new Set(["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "Ñ", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]);
@@ -10,8 +11,11 @@ const validLettersForSecondCase= new Set(["U", "V", "W", "X", "Y", "Z"]);
 const inputElement = document.getElementById('floating_outlined');
 
 
-const elementsforU = new Set(["U","V","W","X","Y","Z"]);
-const elementsforN1 = new Set(["N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]);
+const elementsforUZ = new Set(["U","V","W","X","Y","Z"]);
+const elementsVZ = new Set(["V","W","X","Y","Z"]);
+const elementsAN = new Set(["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N"]);
+const elementsforNZ = new Set(["N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]);
+const elementsAM = new Set(["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M"]);
 
 
 
@@ -56,17 +60,17 @@ for (let i = 0; i < validationFunctions.length; i++) {
 
 function validateString() {
 if (inputElement.value.length < 9) {
-    alert('El inputElement contiene menos de 9 caracteres');
+    error(6);
     return 0;
 }
 
 if (inputElement.value.length > 9) {
-    alert('El inputElement contiene mas de 9 caracteres');
+    error(5);
     return 0;
 }
 
 if (inputElement.value.includes(' ')) {
-    alert("no mame mijo es sin espacios ahi dice verga")
+    error(4);
     return 0;
 } else {
     for (let i = 0; i < 9; i++) {
@@ -84,11 +88,26 @@ if (inputElement.value.includes(' ')) {
 //funcion para validar la primer transicion U...N
 function firstCase() {
     const q1 = document.getElementById('q1');
-    if (validLettersForFirstCase.has(StringComplete[0])) {
-        q1.setAttribute('fill', 'green');
+    const q20 = document.getElementById('q20');
+    const q21 = document.getElementById('q21');
+    if (StringComplete[0] === "U") {
+        q20.setAttribute('fill', 'green');
         return 1;
-    } else {
-        q1.setAttribute('fill', 'red');
+    } 
+    if(elementsVZ.has(StringComplete[0])){
+        // alert("entro a v z")
+        q1.setAttribute('fill', 'green');
+        
+        return 1;
+    }
+    if(elementsAN.has(StringComplete[0])){
+        q21.setAttribute('fill', 'green');
+        // alert("entra a an")
+        return 1;
+    }
+    else {
+        error(1);
+        // q1.setAttribute('fill', 'red');
         // inputElement.value = '';
         StringComplete.splice(0, StringComplete.length);
         // alert('Incorrecto');
@@ -99,11 +118,17 @@ function firstCase() {
 //funcion para validar la segunda transicion N...Z
 function secondCase() {
     const q2 = document.getElementById('q2');
-    if (validLettersForSecondCase.has(StringComplete[1])) {
+    const q22 = document.getElementById('q22');
+    if (elementsforNZ.has(StringComplete[1])) {
         q2.setAttribute('fill', 'green');
         return 1;
+    } 
+    if (elementsAM.has(StringComplete[1])) {
+        q22.setAttribute('fill', 'green');
+        return 1;
     } else {
-        q2.setAttribute('fill', 'red');
+        error(1);
+        // q22.setAttribute('fill', 'red');
         // inputElement.value = '';
         StringComplete.splice(0, StringComplete.length);
         // alert('Incorrecto');
@@ -145,18 +170,18 @@ function validateNumbers() {
                     error(3);
                 }
             }if(numbersCase2.has(StringComplete[5])){
-                q11.setAttribute('fill', 'green');
+                q14.setAttribute('fill', 'green');
                 if(numbersCase1.has(StringComplete[6])){
-                    q12.setAttribute('fill', 'green');
+                    q15.setAttribute('fill', 'green');
                     return 1;
                 }
             }
         }if (numbersCase2.has(StringComplete[4])) {
             q10.setAttribute('fill', 'green');
             if(numbersCase1.has(StringComplete[5])){
-                q14.setAttribute('fill', 'green');
+                q11.setAttribute('fill', 'green');
                 if(numbersCase1.has(StringComplete[6])){
-                    q15.setAttribute('fill', 'green');
+                    q12.setAttribute('fill', 'green');
                     return 1;
                 }
             }
@@ -295,9 +320,80 @@ function error(parametro) {
                 inputElement.value = '';
                 StringComplete.splice(0, StringComplete.length);
                 break;
+            case 4:
+                Swal.fire({
+                    title: "Atenicion!!!",
+                    text: 'La cadena contiene espacios',
+                    icon: 'error',
+                    // timerProgressBar: true,
+                    showConfirmButton: true
+                }).then(() => {
+                    for(const element of states){
+                        element.setAttribute('fill', 'black')
+                    }
+                })
+            
+                inputElement.value = '';
+                StringComplete.splice(0, StringComplete.length);
+                break;
+            case 5:
+                Swal.fire({
+                    title: "Atencion!!!",
+                    text: 'La cadena contiene mas de 9 caracteres',
+                    icon: 'error',
+                    // timerProgressBar: true,
+                    showConfirmButton: true
+                }).then(() => {
+                    for(const element of states){
+                        element.setAttribute('fill', 'black')
+                    }
+                })
+            
+                inputElement.value = '';
+                StringComplete.splice(0, StringComplete.length);
+                break;
+            case 6:
+                Swal.fire({
+                    title: "Atencion!!!",
+                    text: 'La cadena contiene menos de 9 caracteres',
+                    icon: 'error',
+                    // timerProgressBar: true,
+                    showConfirmButton: true
+                }).then(() => {
+                    for(const element of states){
+                        element.setAttribute('fill', 'black')
+                    }
+                })
+            
+                inputElement.value = '';
+                StringComplete.splice(0, StringComplete.length);
+                break;
         default:
             break;
     }
 }
 
+btnl.addEventListener('click', () =>{
+    // Vacía los arreglos
+    StringComplete.splice(0, StringComplete.length);
+    // elementsVZ.clear();
+    inputElement.value = "";
+
+    // q0.setAttribute('fill', 'white');
+    // q1.setAttribute('fill', 'white');
+    // q2.setAttribute('fill', 'white');
+    // q3.setAttribute('fill', 'white');
+    // Recargar la página
+    location.reload();
+});
+
+// const btnRevisar = document.getElementById('btn_revisar');
+
+document.addEventListener('keypress', function(event) {
+  if (event.keyCode === 13) {
+    btn.click();
+  }
+});
+
 btn.addEventListener('click', main);
+
